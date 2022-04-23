@@ -1,17 +1,25 @@
 NAME ?= libft.a
 CC ?= gcc
 CFLAGS = -Wall -Wextra -Werror
-// Fix below line
-SRCS = $(shell find . -name "ft_*.c")
+SRCS = ft_isalpha.c \
+		ft_isdigit.c \
+		ft_isalnum.c \
+		ft_isascii.c \
+		ft_isprint.c \
+		ft_strlen.c \
+		ft_memset.c \
+		ft_bzero.c \
+		ft_memcpy.c
+
 OBJS = ${SRCS:.c=.o}
 
 all: ${NAME}
 
 ${NAME}: ${OBJS}
-	${CC} ${CFLAGS} ${OBJS} -o ${@}
+	ar rcs ${NAME} ${OBJS}
 
 %.o: %.c
-	${CC} ${CFLAGS} -c ${<} -o ${@}
+	${CC} ${CFLAGS} -o ${@} -c ${@:.o=.c}
 
 re: fclean all
 
@@ -22,3 +30,4 @@ clean:
 	rm -f ${OBJS}
 
 .PHONY: clean fclean re all
+

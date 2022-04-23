@@ -6,22 +6,15 @@
 /*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 17:24:46 by tsharma           #+#    #+#             */
-/*   Updated: 2022/04/22 17:25:21 by tsharma          ###   ########.fr       */
+/*   Updated: 2022/04/23 13:21:37 by tsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(char *str)
-{
-	int	i;
+#include "libft.h"
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] < 48 || str[i] > 57)
-		{
-			return (0);
-		}
-		i++;
-	}
+int	ft_isdigit(int c)
+{
+	if (c < 48 || c > 57)
+		return (0);
 	return (1);
 }
