@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/24 15:13:04 by tsharma           #+#    #+#             */
-/*   Updated: 2022/04/25 16:29:17 by tsharma          ###   ########.fr       */
+/*   Created: 2022/04/25 18:19:46 by tsharma           #+#    #+#             */
+/*   Updated: 2022/04/25 18:40:54 by tsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*strnstr(const char *haystack, const char *needle, size_t len)
 {
-	const unsigned char	*src_cpy;
-	unsigned char		*dst_cpy;
-	size_t				i;
+	int	i;
+	int	j;
 
-	i = len;
-	src_cpy = src;
-	dst_cpy = dst;
-	if (dst > src)
+	if (to_find[0] == '\0')
+		return (str);
+	i = 0;
+	while (str[i])
 	{
-		while (i > 0)
+		j = 0;
+		while (to_find[j] != '\0' && to_find[j] == str[i + j])
 		{
-			dst_cpy[i - 1] = src_cpy[i - 1];
-			i--;
+			j++;
 		}
-		return (dst_cpy);
+		if (to_find[j] == '\0')
+			return (&str[i]);
+		i++;
 	}
-	else
-		return (ft_memcpy(dst, src, len));
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 16:49:46 by tsharma           #+#    #+#             */
-/*   Updated: 2022/04/24 18:45:46 by tsharma          ###   ########.fr       */
+/*   Updated: 2022/04/25 16:28:15 by tsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dest_size = ft_strlen(dst);
 	i = 0;
 	if (dstsize == 0)
-		return ft_strlen(src);
+		return (ft_strlen(src));
 	while (src[i] != '\0' && i < (dstsize - dest_size - 1))
 	{
 		dst[dest_size + i] = src[i];

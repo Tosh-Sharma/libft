@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/24 15:13:04 by tsharma           #+#    #+#             */
-/*   Updated: 2022/04/25 16:29:17 by tsharma          ###   ########.fr       */
+/*   Created: 2022/04/25 15:14:17 by tsharma           #+#    #+#             */
+/*   Updated: 2022/04/25 16:27:21 by tsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strrchr(const char *s, int c)
 {
-	const unsigned char	*src_cpy;
-	unsigned char		*dst_cpy;
-	size_t				i;
+	int		i;
+	char	*res;
 
-	i = len;
-	src_cpy = src;
-	dst_cpy = dst;
-	if (dst > src)
+	i = 0;
+	res = NULL;
+	if (s == '\0')
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		while (i > 0)
+		if (s[i] == (char)c)
 		{
-			dst_cpy[i - 1] = src_cpy[i - 1];
-			i--;
+			res = (char *)&s[i];
 		}
-		return (dst_cpy);
+		i++;
 	}
-	else
-		return (ft_memcpy(dst, src, len));
+	if (s[i] == (char)c)
+	{
+		res = (char *)&s[i];
+	}
+	return (res);
 }
