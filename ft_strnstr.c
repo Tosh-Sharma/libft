@@ -5,29 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 18:19:46 by tsharma           #+#    #+#             */
-/*   Updated: 2022/04/25 18:40:54 by tsharma          ###   ########.fr       */
+/*   Created: 2022/04/26 15:47:42 by tsharma           #+#    #+#             */
+/*   Updated: 2022/04/26 16:51:44 by tsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strnstr(const char *haystack, const char *needle, size_t len)
-{
-	int	i;
-	int	j;
+#include "libft.h"
 
-	if (to_find[0] == '\0')
-		return (str);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+{
+	size_t	i;
+	size_t	j;
+
+	if (needle == '\0' || haystack == needle)
+		return ((char *)haystack);
 	i = 0;
-	while (str[i])
+	while (haystack[i] != '\0')
 	{
-		j = 0;
-		while (to_find[j] != '\0' && to_find[j] == str[i + j])
+		if (haystack[i] == needle[0])
 		{
-			j++;
+			j = 0;
+			while (needle[j] == haystack[i + j] && i + j < len)
+			{
+				if (needle[j + 1] == '\0')
+					return ((char *)haystack + i);
+				j++;
+			}
 		}
-		if (to_find[j] == '\0')
-			return (&str[i]);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

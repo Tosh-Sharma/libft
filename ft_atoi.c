@@ -6,7 +6,7 @@
 /*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 17:45:12 by tsharma           #+#    #+#             */
-/*   Updated: 2022/04/25 18:09:43 by tsharma          ###   ########.fr       */
+/*   Updated: 2022/04/26 18:09:34 by tsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,3 @@ int	ft_atoi(const char *str)
 	}
 	return (calculate_number(&str[i], is_neg));
 }
-
