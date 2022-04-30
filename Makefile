@@ -38,10 +38,19 @@ SRCS = 	ft_isalpha.c \
 
 OBJS = ${SRCS:.c=.o}
 
+BONUS =	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
+		ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
+		ft_lstclear.c ft_lstiter.c ft_lstmap.c
+
+BONUS_OBJS = $(BONUS:.c=.o)
+
 all: ${NAME}
 
 ${NAME}: ${OBJS}
 	ar rcs ${NAME} ${OBJS}
+
+bonus:	${OBJS} ${BONUS_OBJS}
+	ar rcs ${NAME} ${OBJS} ${BONUS_OBJS}
 
 %.o: %.c
 	${CC} ${CFLAGS} -o ${@} -c ${@:.o=.c}
@@ -52,6 +61,6 @@ fclean: clean
 	rm -f ${NAME}
 
 clean:
-	rm -f ${OBJS}
+	rm -f ${OBJS} ${BONUS_OBJS}
 
 .PHONY: clean fclean re all
