@@ -6,7 +6,7 @@
 /*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 15:50:20 by tsharma           #+#    #+#             */
-/*   Updated: 2022/04/25 16:28:27 by tsharma          ###   ########.fr       */
+/*   Updated: 2022/05/03 20:32:22 by tsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	i = 0;
 	src_cpy = src;
 	dst_cpy = dst;
+	if (src == NULL && dst == NULL)
+		return (NULL);
 	while (i < n)
 	{
 		dst_cpy[i] = (unsigned char)src_cpy[i];

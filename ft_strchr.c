@@ -6,7 +6,7 @@
 /*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 13:47:37 by tsharma           #+#    #+#             */
-/*   Updated: 2022/04/25 16:29:56 by tsharma          ###   ########.fr       */
+/*   Updated: 2022/05/03 20:26:37 by tsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ char	*ft_strchr(const char *s, int c)
 	char	*res;
 
 	i = 0;
-	if (s == '\0')
-		return (NULL);
 	while (s[i] != '\0')
 	{
 		if (s[i] == (char)c)

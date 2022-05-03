@@ -6,7 +6,7 @@
 /*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 19:12:27 by tsharma           #+#    #+#             */
-/*   Updated: 2022/04/28 20:27:37 by tsharma          ###   ########.fr       */
+/*   Updated: 2022/05/03 19:45:55 by tsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ static char	**split_it(const char *s, char c, size_t count, size_t *size_count)
 		while (s[i] == c)
 			i++;
 		res[k] = (char *)malloc(sizeof(char) * size_count[k] + 1);
+		if (!res[k])
+			return (NULL);
 		copy_word(res[k], (char *)&s[i], size_count[k]);
 		i = i + size_count[k] + 1;
 		k++;
@@ -99,8 +101,12 @@ char	**ft_split(char const *s, char c)
 	size_t	count;
 	size_t	*size_count;
 
+	if (s == NULL)
+		return (NULL);
 	count = counter(s, c);
 	size_count = (size_t *)malloc(sizeof(size_t) * count);
+	if (!size_count)
+		return (NULL);
 	length_count(count, s, c, size_count);
 	return (split_it(s, c, count, size_count));
 }

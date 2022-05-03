@@ -6,54 +6,74 @@
 /*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 14:43:09 by tsharma           #+#    #+#             */
-/*   Updated: 2022/04/27 20:18:59 by tsharma          ###   ########.fr       */
+/*   Updated: 2022/05/03 19:36:55 by tsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	trim_helper(size_t i, size_t j, char const *s1, char const *set)
+static size_t	front_trimmer(char const *s1, char const *set)
 {
-	size_t	count;
+	size_t	i;
+	size_t	j;
+	size_t	flag;
 
 	i = 0;
-	count = 0;
 	while (s1[i] != '\0')
 	{
 		j = 0;
+		flag = 0;
 		while (set[j] != '\0')
 		{
-			if (s1[i] == set[j])
-				count++;
+			if (set[j] == s1[i])
+				flag = 1;
 			j++;
 		}
+		if (flag != 1)
+			break ;
 		i++;
 	}
-	return (count);
+	return (i);
+}
+
+size_t	back_trim(const char *res, char const *set)
+{
+	size_t	length;
+	size_t	i;
+	size_t	j;
+	size_t	flag;
+
+	i = 0;
+	length = ft_strlen(res);
+	while (i < length)
+	{
+		flag = 0;
+		j = 0;
+		while (set[j] != '\0')
+		{
+			if (res[length - 1 - i] == set[j])
+				flag = 1;
+			j++;
+		}
+		if (flag == 0)
+			break ;
+		i++;
+	}
+	return (length - i);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	count;
-	size_t	i;
-	size_t	j;
-	char	*res;
+	size_t		length;
+	size_t		start;
+	char		*result;
 
-	i = 0;
-	j = 0;
-	count = trim_helper(i, j, s1, set);
-	res = (char *)malloc(sizeof(char) * (ft_strlen(s1) - count + 1));
-	i = 0;
-	j = 0;
-	while (s1[i] != '\0')
-	{
-		if (!ft_strchr(set, s1[i]))
-		{
-			res[j] = s1[i];
-			j++;
-		}
-		i++;
-	}
-	res[j] = '\0';
-	return (res);
+	if (s1 == NULL)
+		return (NULL);
+	if (set == NULL)
+		return (ft_strdup((char *)s1));
+	start = front_trimmer(s1, set);
+	length = back_trim(&s1[start], set);
+	result = ft_substr(s1, start, length);
+	return (result);
 }

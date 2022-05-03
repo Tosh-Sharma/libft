@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsharma <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 19:53:33 by tsharma           #+#    #+#             */
-/*   Updated: 2022/04/29 19:54:58 by tsharma          ###   ########.fr       */
+/*   Updated: 2022/05/03 16:16:09 by tsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putendl_fd(char *s, int fd)
 	int	i;
 
 	i = 0;
+	if (s == NULL)
+		return ;
 	while (s[i] != '\0')
 	{
 		write(fd, &s[i], 1);

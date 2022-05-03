@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsharma <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tsharma <tsharma@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 19:51:12 by tsharma           #+#    #+#             */
-/*   Updated: 2022/04/29 20:27:56 by tsharma          ###   ########.fr       */
+/*   Updated: 2022/05/03 16:14:39 by tsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putstr_fd(char *s, int fd)
 	int	i;
 
 	i = 0;
+	if (s == NULL)
+		return ;
 	while (s[i] != '\0')
 	{
 		write(fd, &s[i], 1);
